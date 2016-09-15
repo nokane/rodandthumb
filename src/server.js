@@ -1,43 +1,41 @@
-import express from 'express'
-import path from 'path'
-import compression from 'compression'
-import React from 'react'
-import { renderToString } from 'react-dom/server'
-import { match, RouterContext } from 'react-router'
-import routes from './routes'
+import express from 'express';
+import path from 'path';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import hotMiddleware from 'webpack-hot-middleware';
+import config from './../webpack.config.js';
 
-const app = express()
+const port = process.env.PORT || 3000;
 
-app.use('/', express.static(path.join(__dirname, '../public')))
+const app = express();
 
-app.get('*', (req, res) => {
-   match({ routes: routes, location: req.url }, (err, redirect, props) => {
-    if (err) {
-      res.status(500).send(err.message)
-    } else if (redirect) {
-      res.redirect(redirect.pathname + redirect.search)
-    } else if (props) {
-      const appHtml = renderToString(<RouterContext {...props}/>)
-      res.send(renderPage(appHtml))
-    } else {
-      res.status(404).send('Not Found')
+app.get("/favicon.ico", (req, res) => {
+  res.writeHead(200, { "Content-Type": "image/x-icon" });
+  res.end();
+});
+
+app.use('/', express.static(path.join(__dirname, "../public")));
+
+if (!process.env.NODE_ENV) {
+  const compiler = webpack(config);
+
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    stats: {
+      colors: true,
+      hash: false,
+      timings: true,
+      chunks: false,
+      chunkModules: false,
+      modules: false
     }
-  })
-})
-
-function renderPage(appHtml) {
-  return `
-    <!doctype html public="storage">
-    <html>
-    <meta charset=utf-8/>
-    <title>Rod and Thumb</title>
-    <link rel=stylesheet href=/index.css>
-    <div id=app>${appHtml}</div>
-    <script src="/bundle.js"></script>
-   `
+  }));
+  app.use(hotMiddleware(compiler));
 }
 
-var PORT = process.env.PORT || 8080
-app.listen(PORT, function() {
-  console.log('Express server running at localhost:' + PORT)
-})
+
+app.get('*', require('./index').serverMiddleware);
+
+app.listen(port, () => {
+  console.log("Express server running at localhost:" + port);
+});
