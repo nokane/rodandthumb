@@ -1,87 +1,47 @@
 {
   "name": "rodandthumb",
   "version": "1.0.0",
-  "description": "Information resource for fly fishing",
-  "main": "index.js",
+  "description": "Information Resource for DIY Fly Fishing and Hitchhiking",
+  "main": "server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:dev": "babel-node src/server.js",
+    "start": "npm run start:dev",
+    "start:dev": "node server",
+    "start:prod": "npm run build && NODE_ENV=production PORT=3000 node server",
     "build:client": "webpack --config webpack.config.js",
-    "build:server": "webpack --config webpack.server.config.js"
+    "build": "NODE_ENV=production webpack --config ./webpack.prod.config.js --progress"
   },
   "author": "Niall O'Kane <okanenm@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "compression": "^1.6.1",
-    "express": "^4.13.4",
-    "if-env": "^1.0.0",
+    "babel-core": "^6.13.2",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "express": "^4.14.0",
+    "history": "^3.0.0",
     "isomorphic-fetch": "^2.2.1",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
-    "react-head": "^0.1.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
     "react-helmet": "^3.1.0",
-    "react-redux": "^4.4.5",
-    "react-router": "^2.0.0"
+    "react-router": "^2.6.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.9.0",
-    "babel-core": "^6.9.0",
-    "babel-eslint": "^6.0.4",
+    "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-object-assign": "^6.8.0",
-    "babel-plugin-transform-react-constant-elements": "^6.8.0",
-    "babel-plugin-transform-react-inline-elements": "^6.8.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.2.7",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "css-loader": "^0.23.1",
-    "eslint": "^2.10.2",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-loader": "^1.3.0",
-    "eslint-plugin-import": "^1.8.1",
-    "eslint-plugin-jsx-a11y": "^1.2.2",
-    "eslint-plugin-react": "^5.1.1",
-    "http-server": "^0.8.5",
+    "css-loader": "^0.25.0",
+    "del": "^2.2.1",
+    "eslint": "^3.5.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-react": "^6.2.2",
+    "extract-text-webpack-plugin": "^1.0.1",
     "isomorphic-style-loader": "^1.0.0",
-    "node-sass": "^3.8.0",
+    "postcss-loader": "^0.13.0",
     "react-transform-hmr": "^1.0.4",
-    "sass-loader": "^4.0.0",
-    "webpack": "^1.12.13",
-    "webpack-dev-server": "^1.14.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2"
-  },
-  "babel": {
-    "presets": [
-      "react",
-      "es2015",
-      "stage-0"
-    ],
-    "env": {
-      "test": {
-        "plugins": [
-          "rewire"
-        ]
-      }
-    }
-  },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "extends": "airbnb",
-    "globals": {
-      "__DEV__": true
-    },
-    "env": {
-      "browser": true
-    },
-    "rules": {
-      "no-confusing-arrow": 0,
-      "react/jsx-quotes": 0,
-      "jsx-quotes": [
-        2,
-        "prefer-double"
-      ]
-    }
   }
 }

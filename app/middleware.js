@@ -3,26 +3,32 @@ import ReactDOM from 'react-dom';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Router, match, RouterContext, browserHistory } from 'react-router';
 import Helmet from 'react-helmet';
-import routes from './Routes';
+import routes from './routes';
 import Root from './components/Root';
+
 const isClient = typeof document !== 'undefined';
 
 if (isClient) {
   ReactDOM.render(
-    <Router history={browserHistory}>{routes} </Router>,
-    document.getElementById('root')
-  );
+      <Router history={browserHistory}>
+        {routes}
+      </Router>,
+      document.getElementById('root')
+    );
 }
 
 function renderComponentWithRoot(Component, componentProps) {
   const componentHtml = renderToStaticMarkup(
       <Component {...componentProps} />
   );
+
   const head = Helmet.rewind();
+
   return '<!doctype html>\n' + renderToStaticMarkup(
     <Root content={componentHtml} head={head} />
   );
 }
+
 function handleError(res, error) {
   res.status(500).send(error.message);
 }
@@ -43,7 +49,6 @@ function handleRoute(res, renderProps) {
 function serverMiddleware(req, res) {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
-      console.log(error);
       handleError(error);
     } else if (redirectLocation) {
       handleRedirect(res, redirectLocation);
