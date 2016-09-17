@@ -6,7 +6,9 @@
   "scripts": {
     "start": "npm run start:dev",
     "start:dev": "node server",
-    "build:client": "webpack --config webpack.config.js"
+    "start:prod": "npm run build && NODE_ENV=production PORT=3000 node server",
+    "build:client": "webpack --config webpack.config.js",
+    "build": "NODE_ENV=production webpack --config ./webpack.prod.config.js --progress"
   },
   "author": "Niall O'Kane <okanenm@gmail.com>",
   "license": "ISC",
