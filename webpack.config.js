@@ -22,6 +22,15 @@ module.exports = {
     new ExtractTextPlugin('style.css', { allChunks: true, disable: process.env.NODE_ENV !== 'production'}),
   ],
   module: {
+    preLoaders: [{
+      test: /\.js$/,
+      loader: "eslint-loader",
+      exclude: /node_modules/
+    }],
+    eslint: {
+      configFile: path.resolve(__dirname, './.eslintrc'),
+      emitWarning: true
+    },
     loaders: [{
       test: /\.js?$/,
       loader: 'babel',

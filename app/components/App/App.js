@@ -8,9 +8,9 @@ class App extends Component {
     return (
       <div>
         <Helmet
-          htmlAttributes={{"lang": "en"}}
+          htmlAttributes={{'ang': 'en'}}
           title='Home'
-          titleTemplate='RodAndThumb.com - DIY Fly Fishing and Hitching Abroad - %s'
+          titleTemplate='Rod And Thumb - %s - DIY Fly Fishing and Hitching Abroad'
           meta={[
             {'char-set': 'utf-8'},
             {'name': 'description', 'content': 'DIY (Do it Yourself) Fly Fishing and Hitchhiking'}
