@@ -7,11 +7,11 @@ module.exports = {
   devtool: '#source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './src/index.js'
+    './app/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, 'dist'),
+    filename: 'app.js',
     publicPath: '/'
   },
   plugins: [
@@ -23,7 +23,7 @@ module.exports = {
     loaders: [{
       test: /\.js?$/,
       loader: 'babel',
-      include: path.join(__dirname, 'src'),
+      include: path.join(__dirname, 'app'),
       query: {
         plugins: [
           ['react-transform', {
@@ -39,4 +39,3 @@ module.exports = {
     }]
   }
 };
-

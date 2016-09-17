@@ -1,6 +1,6 @@
-import React, { Component }  from 'react';
-import Helmet from 'react-helmet';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
+import Helmet from 'react-helmet';
 
 class App extends Component {
 
@@ -8,16 +8,16 @@ class App extends Component {
     return (
       <div>
         <Helmet
-          title='Rod and Thumb'
-          titleTemplate='Rod and Thumb - %s'
+          title='MyApp'
+          titleTemplate='MyApp - %s'
           meta={[
             {'char-set': 'utf-8'},
-            {'name': 'description', 'content': 'DIY - Do it Yourself Fly Fishing and Hitchhiking'}
+            {'name': 'description', 'content': 'My dooper dope app'}
           ]}
         />
         <nav>
           <ul>
-            <li><Link to='/'>Users</Link></li>
+            <li><Link to='/'>SF</Link></li>
           </ul>
         </nav>
         {this.props.children}
