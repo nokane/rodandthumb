@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Router, match, RouterContext, browserHistory } from 'react-router';
 import Helmet from 'react-helmet';
-import routes from './Routes';
+import routes from './routes';
 import Root from './components/Root';
 
 const isClient = typeof document !== 'undefined';
 
 if (isClient) {
-
   ReactDOM.render(
-      <Router history={browserHistory}>{routes}</Router>,
+      <Router history={browserHistory}>
+        {routes}
+      </Router>,
       document.getElementById('root')
     );
 }
@@ -46,19 +47,14 @@ function handleRoute(res, renderProps) {
 }
 
 function serverMiddleware(req, res) {
-  console.log('hello');
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       handleError(error);
     } else if (redirectLocation) {
-      console.log('REDIRECT LOCATION')
       handleRedirect(res, redirectLocation);
     } else if (renderProps) {
-      console.log(renderProps);
-      console.log('RENDER PROPS')
       handleRoute(res, renderProps);
     } else {
-      console.log('404');
       res.sendStatus(404);
     }
   });

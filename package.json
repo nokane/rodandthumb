@@ -1,13 +1,12 @@
 {
   "name": "rodandthumb",
   "version": "1.0.0",
-  "description": "Information resource for fly fishing",
+  "description": "Information Resource for DIY Fly Fishing and Hitchhiking",
   "main": "server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "npm run start:dev",
     "start:dev": "node server",
-    "build:client": "webpack --config webpack.config.js",
-    "build:server": "webpack --config webpack.server.config.js"
+    "build:client": "webpack --config webpack.config.js"
   },
   "author": "Niall O'Kane <okanenm@gmail.com>",
   "license": "ISC",
@@ -28,9 +27,14 @@
     "babel-loader": "^6.2.4",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-object-assign": "^6.8.0",
+    "css-loader": "^0.25.0",
     "del": "^2.2.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "isomorphic-style-loader": "^1.0.0",
+    "postcss-loader": "^0.13.0",
     "react-transform-hmr": "^1.0.4",
-    "webpack": "^2.1.0-beta.5",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2"
   }

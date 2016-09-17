@@ -8,11 +8,12 @@ class App extends Component {
     return (
       <div>
         <Helmet
-          title='MyApp'
-          titleTemplate='MyApp - %s'
+          htmlAttributes={{"lang": "en"}}
+          title='Home'
+          titleTemplate='RodAndThumb.com - DIY Fly Fishing and Hitching Abroad - %s'
           meta={[
             {'char-set': 'utf-8'},
-            {'name': 'description', 'content': 'My dooper dope app'}
+            {'name': 'description', 'content': 'DIY (Do it Yourself) Fly Fishing and Hitchhiking'}
           ]}
         />
         <nav>
