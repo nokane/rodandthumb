@@ -7,6 +7,10 @@ dependencies:
     - docker info
     - docker build -t nokane/rodandthumb:latest .
 
+test:
+  override:
+    - echo "test"
+
 deployment:
   production:
     branch: master
