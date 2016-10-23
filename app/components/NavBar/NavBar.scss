@@ -1,21 +1,188 @@
-.topnav {
-  list-style-type: none;
+@import "../../styles/variables.scss";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #333;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+ 
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+ 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.topnav li {
-  float: left;
+/* STYLING OF NAV HERE */
+
+body {
+  font: 16px/1.4em 'PT Sans', sans-serif;;
+  color: #1c1c1c;
 }
 
-.topnav li a {
-    display: inline-block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
+header {
+  background: #1c1c1c;
+  padding: 16px 20px;
+  > h1.logo {
+    > a {
+      color: #d8d8d8;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 20px;
+      line-height: 22px;
+      float: left;
+      letter-spacing: 0.2em;
+    }
+  }
+  > a.to_nav {
+    float: right;
+    color: #fff;
+    background: #4e4e4e;
     text-decoration: none;
-    transition: 0.3s;
-    font-size: 17px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 22px;
+    height: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+  }
+  > a.to_nav:hover, a.to_nav.active {
+    color: #1c1c1c;
+    background: #ccc;
+  }
+}
+header:before,
+header:after {
+  content:"";
+  display:table;
+}
+     
+header:after {
+  clear:both;
+}
+ 
+header {
+  zoom:1;
+}
+
+nav#top-nav {
+  display: none;
+}
+
+nav#top-nav.active {
+  display: block;
+}
+
+nav#top-nav {
+  > ul {
+    list-style: none;
+    background: #1c1c1c;
+    padding: 5px 0;
+    margin: 0 0 1.5em;
+    list-style: disc;
+    padding: 0 0 0 0;
+    > li {
+      > a {
+        display: block;
+        padding: 0 20px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        letter-spacing: 0.1em;
+        line-height: 2em;
+        height: 2em;
+        border-bottom: 1px solid #383838;
+      }
+      > a:hover, a:focus {
+          color: #1c1c1c;
+          background: #ccc;
+      }
+    }
+    > li:last-child {
+      a {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+  header {
+    > a.to_nav {
+        display: none;
+    }
+  }
+
+  div.top-nav-wrapper {
+    position: relative;
+    margin: auto;
+  }
+
+  nav#top-nav {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: none;
+    > ul {
+      padding: 0 0 0 20px;
+      > li {
+        display: inline;
+        > a {
+          float: left;
+          border: none;
+          padding: 0 10px;
+          -webkit-border-radius: 2px;
+          -moz-border-radius: 2px;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
 }
