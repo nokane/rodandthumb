@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 
 import Header from '../Header';
 import NavBar from '../NavBar';
+import Footer from '../Footer';
 
 class App extends Component {
 
@@ -19,9 +20,10 @@ class App extends Component {
             {'name': 'description', 'content': 'DIY (Do it Yourself) Fly Fishing and Hitchhiking'}
           ]}
         />
-        <Header />
-        <NavBar />
+        <Header/>
+        <NavBar/>
         {this.props.children}
+        <Footer/>
       </div>
     );
   }

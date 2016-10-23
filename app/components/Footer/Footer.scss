@@ -1,0 +1,10 @@
+@import "../../styles/variables.scss";
+
+footer {
+	background-color: $nav-bg-color;
+	color: $nav-font-color;
+	> div {
+		padding: 15px;
+	}
+}
+
