@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import Helmet from 'react-helmet';
+
+import Header from '../Header';
+import NavBar from '../NavBar';
 
 class App extends Component {
 
@@ -12,15 +14,13 @@ class App extends Component {
           title='Home'
           titleTemplate='Rod And Thumb - %s - DIY Fly Fishing and Hitching Abroad'
           meta={[
-            {'char-set': 'utf-8'},
+            {'name': 'viewport', 'content': 'width=device-width, initial-scale=1, maximum-scale=1'},
+            {'charset': 'utf-8'},
             {'name': 'description', 'content': 'DIY (Do it Yourself) Fly Fishing and Hitchhiking'}
           ]}
         />
-        <nav>
-          <ul>
-            <li><Link to='/'>SF</Link></li>
-          </ul>
-        </nav>
+        <Header />
+        <NavBar />
         {this.props.children}
       </div>
     );
